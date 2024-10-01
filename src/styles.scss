@@ -1,1 +1,79 @@
 /* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Encode+Sans+Expanded:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import 'ngx-owl-carousel-o/lib/styles/scss/owl.carousel';
+@import 'ngx-owl-carousel-o/lib/styles/scss/owl.theme.default';
+
+
+
+
+$main-color: #0aad0a;
+$light-color: #f0f3f2;
+$shadow: rgba(145, 158, 171, 0.2) 0px 2px 4px -1px,
+  rgba(145, 158, 171, 0.14) 0px 4px 5px 0px,
+  rgba(145, 158, 171, 0.12) 0px 1px 10px 0px;
+$font-family:  "Encode Sans Expanded", sans-serif;
+
+$rating-color: #ffc908;
+$main-transition: 0.8s;
+
+body{
+    font-family: $font-family;
+}
+
+.text-main {
+    color: $main-color;
+}; 
+.text-main-light{
+    color: $light-color;
+}
+.bg-main-light{
+    background-color: $light-color;
+}
+.rating-color{
+    color: $rating-color;
+}
+.font-sm{
+    font-size: 11px;
+}
+.bg-main{
+    background-color: $main-color;
+}
+.main-btn{
+    background-color: $main-color;
+    border-radius: 5px;
+    color: #fff;
+    border: unset;
+    cursor: pointer;
+    padding: 4px 8px;
+
+&:disabled{
+    background-color: #078e076c;
+    color: #ffffff9e;
+    cursor: not-allowed;
+}
+
+}
+.product {
+    border : 1px solid $main-color ; 
+    border-radius: 5px;
+    padding: 4px;
+    box-shadow: $shadow;
+}
+
+.active-link{
+    color: #ffff  !important;
+    background-color: $main-color !important;
+    border-radius: 5px !important;
+}
+
+::-webkit-scrollbar{
+    width: 10px ;
+
+}
+::-webkit-scrollbar-track{
+    background-color: $light-color;
+}
+::-webkit-scrollbar-thumb{
+    background-color: $main-color;
+}

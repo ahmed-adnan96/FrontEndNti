@@ -1,0 +1,28 @@
+<section class="w-75 mx-auto shadow rounded p-4 my-3 bg-main-light">
+    <h1> Login : </h1>
+    <form [formGroup]="loginForm" (ngSubmit)="handleForm()">
+  
+        <div class="form-item">
+            <label for="userName">Email</label>
+            <input type="text" formControlName="userName" class="form-control" id="userName">
+        </div>
+        <div *ngIf="loginForm.get('userName')?.errors && loginForm.get('userName')?.touched"
+            class="alert alert-danger p-1 small w-50 mx-auto mt-1">
+            <p class="mb-0 " *ngIf="loginForm.get('email')?.getError('required')">Email Is Required</p>
+            <p class="mb-0 " *ngIf="loginForm.get('email')?.getError('email')">Email invalid Format</p>
+
+        </div>
+        <div class="form-item">
+            <label for="password">Password</label>
+            <input type="password" formControlName="password" class="form-control" id="password">
+        </div>
+        <div *ngIf="loginForm.get('password')?.errors && loginForm.get('password')?.touched"
+            class="alert alert-danger p-1 small w-50 mx-auto mt-1">
+            <p class="mb-0 " *ngIf="loginForm.get('password')?.getError('required')"> Password Is Required</p>
+            <p class="mb-0 " *ngIf="loginForm.get('password')?.getError('pattern')">must be least at 6 </p>
+        </div>     
+        <button [disabled]="loginForm.invalid" class="main-btn my-2">Login <span *ngIf="isLoading" > <i class="fas fa-spin fa-spinner"></i> </span> </button>
+         
+    </form>
+    <p *ngIf="errMasg" class="alert alert-danger p-1 w-50 mx-auto mb-0 text-center">{{errMasg}}</p>
+</section>

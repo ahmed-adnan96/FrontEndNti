@@ -1,0 +1,73 @@
+
+<section class="py-4"> 
+    <div class="row g-0">
+        <div class="col-md-9">
+            <owl-carousel-o [options]="mainSlider">
+                <ng-template carouselSlide>
+                    <img height="400" src="./assets/images/main-slider-1.jpeg" alt="Slide1">
+                </ng-template>  
+                <ng-template carouselSlide>
+                    <img height="400" src="./assets/images/main-slider-2.jpeg" alt="Slide2">
+                </ng-template>  
+                <ng-template carouselSlide>
+                    <img height="400"  src="./assets/images/main-slider-3.jpeg" alt="Slide3">
+                </ng-template>  
+         
+              </owl-carousel-o>
+        </div>
+        <div class="col-md-3">
+            <img height="200" class="w-100" src="./assets/images/slide-1.jpeg" alt="slide-1">
+            <img height="200" class="w-100" src="./assets/images/slide-2.jpeg" alt="slide-2">
+        </div>
+    </div>
+</section>
+
+
+<section class="py-4" *ngIf="categories.length > 0 ">
+        <h2>Popular Categories</h2>
+        <owl-carousel-o [options]="categoryOptions">
+
+            <ng-container *ngFor="let category of categories ">
+              <ng-template carouselSlide [id]="category._id">
+                <img height="400" [src]="category.image[0].path" [alt]="category.name" [title]="category.name">
+                <h3 class="h6 text-main text-center">{{category.name}}</h3>
+              </ng-template>
+            </ng-container>
+            
+          </owl-carousel-o>
+
+</section>
+
+
+<section class="py-4" *ngIf="products.length>0">
+    <h2 class="pb-2">Popular Products </h2>
+    <div class="container">
+        <div class="row g-4">
+            <div *ngFor="let product of products | slice:0:6" class=" col-sm-6 col-md-4 col-lg-3 col-xl-2">
+                <div class="product h-100 d-flex align-items-between flex-column justify-content-between ">
+                        <header role="button" [routerLink]="['/productdetails' , product.slug]">
+
+                            <img class="w-100" height="250" [src]="product.image[0].path" [alt]="product.name" [title]="product.name">
+                            <h3 class="h6">{{product.name | cuttext:3}}</h3>
+                            <h4 class="h6 text-main">{{product.Subcategory.name}}</h4>
+                            <div class="product-footer d-flex align-items-center justify-content-between">
+                                <span class="small ">{{product.price | currency:'e£'}}</span>
+                                <div>
+                                    <i class="fas fa-star rating-color"></i>
+                                    <span class="text-muted">
+                                        {{product.averageRating}}
+                                    </span>
+                                </div>
+                                
+                            </div>
+                        </header>
+                        <footer>
+        this._ToastrService.error(err.message)
+                            <button (click)="addProdToCart(product._id , product.quantity ,  btnAdd )" #btnAdd class=" w-100 main-btn">+ Add To Cart</button>
+                        </footer>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
